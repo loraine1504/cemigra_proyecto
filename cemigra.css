@@ -1,0 +1,1217 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .section-animate {
+    opacity: 0; /* Inicialmente oculto */
+    transform: translateY(20px); /* Comienza desplazado */
+  }
+  
+  .section-animate.visible {
+    animation: fadeIn 1s forwards; /* Aplica la animación */
+  }
+    
+/* Estilos para el encabezado */
+.header {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Altura fija del header */
+    background-image: url('/img/fondo\ header.png'); /* Cambia la URL a la imagen de fondo deseada */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    box-sizing: border-box;
+}
+
+/* Contenedor de la navegación principal */
+.nav-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(51, 51, 51, 0.233); /* Fondo semi-transparente */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+/* Contenedor del logo y texto */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px; /* Ajusta el tamaño del logo */
+    height: auto;
+    margin-right: 10px;
+}
+
+.logo-text h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo-text p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Estilos para la navegación horizontal */
+.nav {
+    display: flex;
+    gap: 15px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav a:hover {
+    background-color: #555;
+}
+
+/* Estilos para el botón de contacto */
+.contact-btn {
+    background-color: #1084EB;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: #1084EB;
+}
+
+/* Contenido del encabezado centrado */
+.header-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+    color: white;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.header-content p {
+    margin: 10px 0 0;
+    font-size: 18px;
+}
+
+/* Estilos para el menú lateral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: rgba(51, 51, 51, 0.9);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 2;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.side-menu.active {
+    transform: translateX(0);
+}
+
+.side-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.side-menu a:hover {
+    background-color: #555;
+}
+
+.close-menu {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el ícono del menú lateral */
+.menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    display: none;
+}
+
+/* Estilos para los enlaces en el menú de navegación */
+.nav a, .side-menu a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: inline-block;
+    font-size: 16px; /* Ajusta el tamaño de fuente según sea necesario */
+    overflow: hidden;
+}
+
+.nav a::after, .side-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px; /* Ajusta el grosor de la línea */
+    width: 0;
+    background-color: #1084EB; /* Color de la línea */
+    transition: width 0.3s ease;
+}
+
+/* Efecto hover: extender la línea */
+.nav a:hover::after, .side-menu a:hover::after {
+    width: 100%;
+}
+/* Estilos para el rectángulo de información */
+.info-box {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.664);
+    border-radius: 10px;
+    padding: 10px;
+    width: 80%;
+    max-width: 800px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para cada elemento de información */
+.info-item {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.info-icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.info-text {
+    font-size: 16px;
+}
+
+/* Estilos para la línea divisoria entre secciones */
+.info-divider {
+    height: 30px;
+    border-left: 1px solid rgb(132, 131, 131);
+    margin: 0 10px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .header {
+        padding: 20px 10px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .header-content h1 {
+        font-size: 25px;
+        width: 300px;
+    }
+
+    .header-content p {
+        font-size: 14px;
+    }
+}
+
+/* Estilos para la sección de información */
+.info-section {
+    background-color: #f9f9f9;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+/* Contenedor de la información con fondo */
+.info-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background-image: url('/img/img\ 2.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    position: relative;
+}
+
+/* Pseudo-elemento para opacidad del fondo */
+.info-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.info-container > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Estilos del título en la sección de información */
+.info-section h2 {
+    margin-bottom: 15px;
+    font-size: 28px;
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos del párrafo en la sección de información */
+.info-section p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ffffff;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.cards-container {
+    display: grid;
+    gap: 50px; /* Separación aumentada entre las tarjetas */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    perspective: 1000px;
+    height: 250px; /* Tamaño ajustado */
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+.card-front {
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card-back {
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transform: rotateY(180deg);
+}
+
+.card-image img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.card-info h2 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 0;
+}
+
+.card-back p {
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+}
+
+
+.about-us {
+    background: url('/img/fondo\ 3.png') no-repeat center center;
+    background-size: cover;
+    padding: 80px 0; /* Asegura que el padding vertical esté bien ajustado */
+    position: relative;
+    color: #fff;
+    margin-top: 60px;
+    width: 100%; /* Asegura que ocupe todo el ancho del viewport */
+    margin-left: calc(-100vw / 2 + 50%); /* Ajuste para centrar correctamente el fondo */
+    margin-right: calc(-100vw / 2 + 50%); /* Ajuste para centrar correctamente el fondo */
+}
+
+.about-us::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Ajusta la opacidad aquí */
+    z-index: 1;
+}
+
+.about-us-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    background: rgba(0, 0, 0, 0.6); /* Fondo oscuro con opacidad para mejor legibilidad */
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.about-us h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.about-us p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .about-us {
+        padding: 60px 0;
+    }
+
+    .about-us-content {
+        padding: 30px;
+    }
+
+    .about-us h2 {
+        font-size: 28px;
+    }
+
+    .about-us p {
+        font-size: 16px;
+    }
+}
+
+.why-choose-us {
+    padding: 60px 20px;
+    background: #f5f5f5; /* Fondo claro para diferenciarlo de otras secciones */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Asegura que la imagen de fondo no se salga del contenedor */
+}
+
+.why-choose-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+    position: relative;
+    z-index: 1; /* Asegura que el contenido esté por encima de la imagen de fondo */
+}
+
+.team-photo {
+    width: 250px; /* Tamaño inicial de la imagen */
+    height: 250px; /* Tamaño inicial de la imagen */
+    overflow: hidden;
+    position: relative;
+    border-radius: 50%; /* Bordes redondeados para hacer la imagen circular */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efectos de transición */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor */
+    border-radius: 50%; /* Bordes redondeados para la imagen circular */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efectos de transición */
+}
+
+.team-photo:hover {
+    transform: scale(1.1); /* Expande la imagen al pasar el cursor */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada al pasar el cursor */
+}
+
+.text-content {
+    flex: 2;
+    max-width: 800px;
+    padding: 20px;
+    background: #fff; /* Fondo blanco para el texto */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: -50px; /* Para que se superponga un poco sobre la imagen */
+}
+
+.text-content h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #1084EB;
+}
+
+.text-content h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333; /* Color para el subtítulo */
+}
+
+.text-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #666; /* Color de texto para mejor legibilidad */
+}
+
+@media (max-width: 768px) {
+    .why-choose-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .team-photo {
+        width: 120px; /* Tamaño ajustado para móviles */
+        height: 120px; /* Tamaño ajustado para móviles */
+    }
+
+    .text-content {
+        width: 100%;
+        margin-top: 0; /* Remueve el margen superior en móviles */
+    }
+
+    .text-content h2 {
+        font-size: 28px;
+    }
+
+    .text-content h3 {
+        font-size: 20px;
+    }
+
+    .text-content p {
+        font-size: 16px;
+    }
+}
+
+#services2 {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+   background-image: url(/img/fondo\ 4.png);
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* Ajusta la altura según tu diseño */
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.7s ease-in-out;
+    will-change: transform;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+    text-align: left;
+    max-width: 60%;
+    background: rgba(0, 0, 0, 0.4); /* Fondo oscuro con opacidad para mejorar la legibilidad */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.slide-content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ffd700; /* Color dorado para destacar el título */
+}
+
+.slide-content p {
+    font-size: 1.1rem;
+}
+
+.info-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 20px;
+    gap: 20px; /* Espacio entre las tarjetas */
+}
+
+.info-card {
+    background: #ffffff; /* Fondo blanco para tarjetas */
+   
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.info-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333; /* Color oscuro para el texto de título */
+}
+
+.info-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666; /* Color gris oscuro para el texto */
+}
+
+/* Formas decorativas alrededor */
+.info-section::before, .info-section::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: #1084EB; /* Color azul para las formas */
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.info-section::before {
+    top: -50px;
+    left: -50px;
+}
+
+.info-section::after {
+    bottom: -50px;
+    right: -50px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .info-section {
+        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-card {
+        width: 100%;
+    }
+}
+
+
+
+/* Estilos para la sección de servicios */
+#services {
+    padding: 30px;
+    background-color: #fff; /* Fondo blanco para resaltar el contenido */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más intensa para un efecto de elevación */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Estilos para el encabezado de la sección */
+.section-header {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Ícono del encabezado */
+.header-icon {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-icon img {
+    width: 100px; /* Tamaño del ícono */
+    height: auto;
+}
+
+/* Estilo para el título */
+.section-header h2 {
+    font-size: 2.5rem; /* Tamaño del título */
+    color: #333; /* Color del texto */
+    margin: 20px 0 0; /* Ajuste del margen */
+    padding: 10px 0;
+    background: linear-gradient(135deg, #1084EB, #5C8BBD); /* Fondo degradado opcional */
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Estilos para el contenedor del slider */
+.slider-container {
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+}
+
+/* Estilos para el slider */
+.slider {
+    display: flex;
+    transition: transform 0.9s ease-in-out; /* Transición más suave */
+}
+
+/* Estilos para cada slide */
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+    height: 400px; /* Ajusta la altura aquí */
+    position: relative;
+    border-radius: 10px; /* Bordes redondeados para las imágenes */
+}
+
+/* Contenido del slide */
+.slide-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 80%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animación de cambio de slide */
+.slide-content h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Información de la slide */
+.slide-content p {
+    font-size: 1rem;
+}
+
+/* Estilos generales para la sección del equipo */
+#team {
+    background-color: #f4f4f4;
+    padding: 50px 0;
+    text-align: center;
+    position: relative; /* Necesario para posicionar los círculos decorativos */
+    overflow: hidden; /* Asegura que los círculos no salgan del contenedor */
+}
+
+#team h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    position: relative; /* Necesario para posicionar los círculos decorativos */
+    z-index: 1; /* Asegura que el contenido esté sobre los círculos */
+}
+
+.team-member {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    width: 250px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-member:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.team-photo {
+    width: 100px; /* Tamaño ajustado */
+    height: 100px; /* Tamaño ajustado */
+    border-radius: 50%;
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-info h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.team-info p {
+    font-size: 1em;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.team-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.icon {
+    font-size: 1.5em;
+    color: #1084EB;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.icon:hover {
+    color: #0056b3;
+    transform: scale(1.2);
+}
+
+/* Círculos decorativos alrededor de la sección */
+#team::before,
+#team::after,
+#team .circle-decorative {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(16, 132, 235, 0.2);
+    z-index: 0; /* Asegura que los círculos estén detrás del contenido */
+    pointer-events: none;
+}
+
+#team::before {
+    width: 200px;
+    height: 200px;
+    top: -50px;
+    left: -50px;
+}
+
+#team::after {
+    width: 150px;
+    height: 150px;
+    bottom: -50px;
+    right: -50px;
+}
+
+#team .circle-decorative {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(16, 132, 235, 0.3);
+    top: 10%;
+    left: 15%;
+    z-index: -1;
+}
+
+#team .circle-decorative:nth-child(2) {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(16, 132, 235, 0.3);
+    top: 20%;
+    right: 20%;
+}
+
+#team .circle-decorative:nth-child(3) {
+    width: 120px;
+    height: 120px;
+    background-color: rgba(16, 132, 235, 0.3);
+    bottom: 20%;
+    left: 20%;
+}
+
+#team .circle-decorative:nth-child(4) {
+    width: 180px;
+    height: 180px;
+    background-color: rgba(16, 132, 235, 0.3);
+    bottom: 10%;
+    right: 10%;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 80%; /* Ajusta el ancho del carrusel */
+    max-width: 1200px; /* Establece un ancho máximo */
+    height: 300px; /* Ajusta la altura del carrusel */
+    margin: 50px auto; /* Centra el carrusel en la página */
+    border-radius: 10px; /* Opcional: agrega bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Opcional: agrega una sombra */
+}
+
+.carousel-wrapper {
+    display: flex;
+    width: 400%; /* Ancho total del contenedor (número de imágenes * 100%) */
+    height: 100%;
+    animation: scroll 20s linear infinite; /* Ajusta la duración según sea necesario */
+}
+
+.carousel-item {
+    flex: 0 0 25%; /* Cada imagen ocupa el 25% del ancho del contenedor */
+    position: relative;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsionar */
+    display: block;
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); } /* Mueve el carrusel al 100% de su ancho */
+}
+
+#testimonios {
+    position: relative;
+    padding: 50px 20px;
+    text-align: center;
+    color: #fff; /* Cambia el color del texto a blanco para mejor contraste */
+}
+
+#testimonios:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/img/fondo\ 2.png') no-repeat center center;
+    background-size: cover;
+    filter: blur(5px); /* Aplica el efecto de blur */
+    z-index: -1;
+    opacity: 0.8; /* Ajusta la opacidad para mejor contraste */
+}
+
+.testimonial-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.testimonial {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    position: relative;
+    text-align: left;
+    color: #fff;
+}
+
+.testimonial-img {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+}
+
+.testimonial-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.vector-decoration {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 120%;
+    height: 120%;
+    background: url('img/vector.png') no-repeat center center;
+    background-size: contain;
+    z-index: -1;
+}
+
+blockquote {
+    font-style: italic;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+blockquote:before {
+    content: '“';
+  
+}
+
+#contactenos {
+    background-color: #f9f9f9; /* Fondo claro para la sección */
+    padding: 50px 20px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco con un poco de transparencia */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #1084EB;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    height: 150px;
+    resize: none;
+}
+
+button[type="submit"] {
+    background-color: #1084EB;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.vector-circles .circle {
+    position: absolute;
+    background-color: #1084EB;
+    border-radius: 50%;
+    opacity: 0.2;
+}
+
+.circle-small {
+    width: 60px;
+    height: 60px;
+}
+
+.circle-large {
+    width: 120px;
+    height: 120px;
+}
+
+.circle-small:nth-child(1) {
+    top: 10%;
+    left: 5%;
+}
+
+.circle-large:nth-child(2) {
+    bottom: 15%;
+    right: 10%;
+}
+
+.circle-small:nth-child(3) {
+    top: 50%;
+    right: 15%;
+}
+/* Estilos del footer */
+footer {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-item img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-item span {
+    font-size: 14px;
+}
+
+.footer-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Estilos adicionales para el enlace de Instagram */
+.footer-icon {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.footer-icon:hover img {
+    opacity: 0.8;
+}
